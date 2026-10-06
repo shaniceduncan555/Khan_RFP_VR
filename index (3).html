@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem("ka-rfp-theme")||"light";if(t!=="auto")document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+<title>Khan Academy Districts · RFP Visibility Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0C2F6B; --navy-deep:#071F49; --green:#14BF96; --green-deep:#0E9A78; --green-tint:#E3F7F1;
+  --peri:#5F5FFF; --peri-tint:#ECECFF; --indigo:#22226B;
+  --orange:#EF6B3B; --orange-tint:#FDEBE3; --amber:#F2A900; --amber-tint:#FFF4D6; --pink:#E85CB0; --pink-tint:#FBE6F3;
+  --red:#D7263D; --red-tint:#FDE7EA;
+  --bg:#F7F5EE; --card:#FFFFFF; --line:#E6E2D6; --line-strong:#D2CDBD;
+  --ink:#1B2233; --ink-2:#4B5366; --ink-3:#8A91A3;
+  --shadow:0 2px 10px rgba(12,47,107,.08); --doc-title:#C64E22; --heading:#0C2F6B; --tab-off:#8A91A3; --focus:rgba(12,47,107,.12); --t-rfp:#0C2F6B; --t-sales:#0E9A78; --t-legal:#4343D9; --t-it:#C64E22; --t-fin:#9C6D00; --t-lead:#B8367F; --t-other:#4B5366; --tt-rfp:#E4EAF6; --tt-sales:#E3F7F1; --tt-legal:#ECECFF; --tt-it:#FDEBE3; --tt-fin:#FFF4D6; --tt-lead:#FBE6F3; --tt-other:#EEF0F4;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121A2B; --card:#1A2439; --line:#2B3650; --line-strong:#3A4766; --ink:#EEF1F7; --ink-2:#C2C9D8; --ink-3:#8C95AA;
+  --green-tint:#143D35; --peri-tint:#272A5A; --orange-tint:#4A2A1C; --amber-tint:#4A3A10; --pink-tint:#4A2038; --red-tint:#4A1B22;
+  --shadow:0 2px 10px rgba(0,0,0,.35); --doc-title:#FFC53D; --heading:#FFFFFF; --tab-off:#C2C9D8; --focus:rgba(20,191,150,.3); --t-rfp:#8FB3FF; --t-sales:#3FE0B7; --t-legal:#A9A9FF; --t-it:#FF9A6E; --t-fin:#FFC53D; --t-lead:#FF8CD0; --t-other:#C2C9D8; --tt-rfp:#1F3357; --tt-sales:#143D35; --tt-legal:#272A5A; --tt-it:#4A2A1C; --tt-fin:#4A3A10; --tt-lead:#4A2038; --tt-other:#2B3650;
+}}
+:root[data-theme="dark"]{
+  --bg:#121A2B; --card:#1A2439; --line:#2B3650; --line-strong:#3A4766; --ink:#EEF1F7; --ink-2:#C2C9D8; --ink-3:#8C95AA;
+  --green-tint:#143D35; --peri-tint:#272A5A; --orange-tint:#4A2A1C; --amber-tint:#4A3A10; --pink-tint:#4A2038; --red-tint:#4A1B22;
+  --shadow:0 2px 10px rgba(0,0,0,.35); --doc-title:#FFC53D; --heading:#FFFFFF; --tab-off:#C2C9D8; --focus:rgba(20,191,150,.3); --t-rfp:#8FB3FF; --t-sales:#3FE0B7; --t-legal:#A9A9FF; --t-it:#FF9A6E; --t-fin:#FFC53D; --t-lead:#FF8CD0; --t-other:#C2C9D8; --tt-rfp:#1F3357; --tt-sales:#143D35; --tt-legal:#272A5A; --tt-it:#4A2A1C; --tt-fin:#4A3A10; --tt-lead:#4A2038; --tt-other:#2B3650;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Lato','Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.45}
+button,input,select,textarea{font-family:inherit;font-size:14px;color:var(--ink)}
+a{color:var(--green-deep)}
+input,select,textarea{background:var(--card);border:1px solid var(--line-strong);border-radius:8px;padding:9px 11px;width:100%;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px var(--focus)}
+textarea{resize:vertical;min-height:70px}
+label.f{display:flex;flex-direction:column;gap:4px}
+label.f>span{font-size:12px;font-weight:700;color:var(--ink-2)}
+.req{color:var(--red)}
+.btn{border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;transition:background .15s,transform .1s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--navy);color:#fff}
+.btn.primary:hover{background:var(--navy-deep)}
+.btn.green{background:var(--green);color:#042A20}
+.btn.green:hover{background:#12AE88}
+.btn.outline{background:transparent;color:var(--heading);border:1.5px solid var(--heading)}
+.btn.ghost{background:transparent;color:var(--ink-3)}
+.btn.ghost:hover{color:var(--ink)}
+.btn.danger{background:transparent;color:var(--red);border:1.5px solid var(--red)}
+.btn.small{padding:6px 11px;font-size:12px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;line-height:1.4}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 28px}
+@media (max-width:640px){.wrap{padding:16px 14px}}
+/* header */
+.hdr{background:var(--navy);color:#fff;padding:22px 0 0}
+.hdr .wrap{padding-top:0;padding-bottom:0}
+.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.hex{width:40px;height:44px;flex-shrink:0}
+.brand h1{margin:0;font-size:22px;font-weight:900;letter-spacing:-.2px;line-height:1.1}
+.brand p{margin:3px 0 0;font-size:12.5px;opacity:.78}
+.hdr-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.stage-strip{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.14);overflow-x:auto}
+.stage-strip>div{padding:9px 14px 10px;font-size:11.5px;color:rgba(255,255,255,.72);white-space:nowrap;border-right:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:7px}
+.stage-strip>div b{color:#fff;font-weight:700}
+.stage-strip .n{width:18px;height:18px;border-radius:50%;background:var(--green);color:#042A20;font-weight:900;font-size:10px;display:inline-flex;align-items:center;justify-content:center}
+/* summary */
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.sum>div{background:var(--card);border-radius:12px;padding:14px 16px;border-left:5px solid var(--navy);box-shadow:var(--shadow)}
+.sum .v{font-size:30px;font-weight:900;line-height:1}
+.sum .l{font-size:12px;font-weight:700;margin-top:6px;color:var(--ink-2)}
+/* panel */
+.panel{background:var(--card);border-radius:14px;border:1px solid var(--line);padding:16px 20px;box-shadow:var(--shadow);margin-bottom:22px}
+.panel-h{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.panel-h h2{margin:0;font-size:15px;font-weight:900;color:var(--heading)}
+.seg{display:inline-flex;border:1.5px solid var(--line-strong);border-radius:8px;overflow:hidden}
+.seg button{border:none;background:transparent;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;color:var(--ink-3)}
+.seg button.on{background:var(--navy);color:#fff}
+.chip{border:1.5px solid var(--line-strong);background:var(--card);border-radius:999px;padding:4px 11px;font-size:12px;font-weight:700;cursor:pointer;color:var(--ink-2)}
+.chip.on{color:#fff}
+/* timeline */
+.tl{overflow-x:auto;padding-bottom:6px}
+.tl-track{min-width:640px;position:relative;padding-top:50px;padding-bottom:6px}
+.tl-line{position:absolute;top:34px;left:0;right:0;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--navy),var(--green))}
+.tl-today{position:absolute;top:14px;left:0;display:flex;flex-direction:column;align-items:center;z-index:2}
+.tl-today span{font-size:10px;font-weight:900;color:#fff;background:var(--navy);padding:2px 8px;border-radius:10px;margin-bottom:4px}
+.tl-today i{width:3px;height:22px;background:var(--navy);border-radius:2px;display:block}
+.tl-row{display:flex;gap:14px;padding-left:46px;padding-right:14px;align-items:flex-start}
+.tl-node{display:flex;flex-direction:column;align-items:center}
+.tl-date{font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px;white-space:nowrap;margin-bottom:4px;border:1px solid transparent}
+.tl-tick{width:2px;height:10px;border-radius:2px}
+.dcard{width:188px;flex-shrink:0;background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:9px 11px;cursor:pointer;margin-top:6px;transition:border-color .15s,box-shadow .15s}
+.dcard:hover{border-color:var(--navy);box-shadow:var(--shadow)}
+.dcard .t{font-size:12.5px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dcard .s{font-size:11px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:6px}
+.dcard.doc{border-left-width:4px}
+.dcard.doc .t{color:var(--doc-title)}
+.lrow.doc .t{color:var(--doc-title)}
+.lrow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:8px;padding:9px 13px;cursor:pointer;margin-bottom:7px}
+.lrow:hover{border-color:var(--navy)}
+.lrow .t{font-size:13px;font-weight:900}
+.lrow .s{font-size:11px;color:var(--ink-2)}
+.lrow .r{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+/* tabs */
+.tabs{display:flex;border-bottom:2px solid var(--line);margin-bottom:16px;overflow-x:auto}
+.tabs button{border:none;background:transparent;padding:10px 18px;font-weight:900;font-size:13px;cursor:pointer;color:var(--tab-off);border-bottom:3px solid transparent;margin-bottom:-2px;display:flex;gap:7px;align-items:center;white-space:nowrap}
+.tabs button.on{color:var(--heading);border-bottom-color:var(--green);background:var(--green-tint);border-radius:8px 8px 0 0}
+.tabs .cnt{font-size:11px;padding:1px 7px;border-radius:99px;background:var(--line);color:var(--ink-2)}
+.tabs button.on .cnt{background:var(--green);color:#042A20}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.toolbar input{flex:1 1 220px;min-width:180px}
+.toolbar select{width:auto}
+/* grid cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:12px;padding:16px 18px;cursor:pointer;transition:box-shadow .15s,border-color .15s}
+.card:hover{box-shadow:0 6px 20px rgba(12,47,107,.13);border-color:var(--navy)}
+.card .d{font-size:16px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .t{font-size:12.5px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meta{display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.teambar{display:flex;height:6px;border-radius:99px;overflow:hidden;background:var(--line);margin-top:10px}
+.teambar>i{display:block;height:100%}
+.nextup{margin-top:9px;font-size:11.5px;padding:7px 10px;border-radius:7px;background:var(--bg);border:1px solid var(--line);display:flex;gap:6px;align-items:center}
+.nextup b{white-space:nowrap}
+.empty{text-align:center;padding:56px 20px;color:var(--ink-3);background:var(--card);border-radius:14px;border:1.5px dashed var(--line-strong)}
+.empty .big{font-size:36px;margin-bottom:10px}
+.empty b{display:block;font-size:15px;color:var(--ink);margin-bottom:4px}
+/* overlay */
+.ovl{position:fixed;inset:0;background:rgba(7,31,73,.45);z-index:1000;display:flex}
+.ovl.right{justify-content:flex-end}
+.ovl.center{align-items:center;justify-content:center;padding:16px}
+.drawer{width:min(640px,94vw);height:100%;background:var(--card);overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.25);animation:slide .22s ease-out}
+@keyframes slide{from{transform:translateX(100%)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.drawer{animation:none}}
+.modal{width:min(720px,96vw);max-height:92vh;background:var(--card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.3)}
+.modal-h{background:var(--navy);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+.modal-h h3{margin:0;font-size:17px;font-weight:900}
+.modal-b{padding:22px 24px;overflow-y:auto;flex:1}
+.modal-f{padding:14px 24px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px}
+.x{background:none;border:none;font-size:22px;cursor:pointer;color:inherit;line-height:1;padding:0 4px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media (max-width:560px){.g2,.g3{grid-template-columns:1fr}}
+.fh{font-size:13px;font-weight:900;color:var(--heading);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--green-tint)}
+.fh:first-child{margin-top:0}
+.multi{display:flex;flex-wrap:wrap;gap:6px}
+.multi button{border:1.5px solid var(--line-strong);background:var(--card);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;color:var(--ink-2)}
+.multi button.on{border-color:var(--green);background:var(--green-tint);color:var(--green-deep)}
+/* detail */
+.dt{padding:26px 28px 32px}
+@media (max-width:560px){.dt{padding:20px 16px 28px}}
+.dt h2{margin:0;font-size:22px;font-weight:900;color:var(--heading);line-height:1.15}
+.dt .sub{color:var(--ink-2);margin-top:3px}
+.sec{margin-bottom:24px}
+.sec>h4{margin:0 0 10px;font-size:12.5px;font-weight:900;color:var(--heading);padding-bottom:6px;border-bottom:2px solid var(--green-tint);display:flex;justify-content:space-between;align-items:center}
+.kv{margin-bottom:7px;font-size:13.5px}
+.kv span{font-size:12px;color:var(--ink-3);font-weight:700}
+.box{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 13px;white-space:pre-wrap;font-size:13px;line-height:1.55}
+.milestones{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+@media (max-width:560px){.milestones{grid-template-columns:repeat(3,1fr)}}
+.ms{border-radius:8px;padding:8px 9px;border:1px solid var(--line);background:var(--bg);font-size:11px}
+.ms b{display:block;font-size:11.5px;margin-bottom:2px}
+.ms.done{background:var(--green-tint);border-color:var(--green)}
+.ms.late{background:var(--red-tint);border-color:var(--red)}
+.ms.soon{background:var(--amber-tint);border-color:var(--amber)}
+.gng{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media (max-width:560px){.gng{grid-template-columns:1fr}}
+.gng>div{border-radius:9px;padding:10px 12px;border:1px solid var(--line);background:var(--bg)}
+.gng .k{font-size:11px;font-weight:700;color:var(--ink-3)}
+.gng .vv{font-size:14px;font-weight:900;margin-top:2px}
+/* action items */
+.team-grp{margin-bottom:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.team-grp>header{padding:8px 12px;display:flex;justify-content:space-between;align-items:center;font-weight:900;font-size:12.5px;color:#fff}
+.team-grp>header small{font-weight:700;opacity:.9;font-size:11px}
+.item{display:grid;grid-template-columns:28px 1fr 120px 128px 28px;gap:6px;align-items:center;padding:7px 10px;border-top:1px solid var(--line);background:var(--card)}
+.item.done{opacity:.6}
+.item.done .nm{text-decoration:line-through}
+@media (max-width:620px){.item{grid-template-columns:28px 1fr 28px}.item .ow,.item .du{grid-column:2}}
+.item input,.item select{padding:5px 8px;font-size:12.5px;border-radius:6px}
+.item .nm{font-weight:700}
+.item .st{width:22px;height:22px;border-radius:6px;border:2px solid var(--line-strong);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;font-size:12px;font-weight:900}
+.item .st.ip{border-color:var(--peri);background:var(--peri-tint);color:var(--peri)}
+.item .st.dn{border-color:var(--green);background:var(--green);color:#042A20}
+.item .st.bl{border-color:var(--red);background:var(--red-tint);color:var(--red)}
+.item .extra{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:2px 0 4px 34px}
+@media (max-width:620px){.item .extra{grid-template-columns:1fr;padding-left:0}}
+.item .due-tag{font-size:10.5px;font-weight:900;margin-top:2px}
+.add-item{display:grid;grid-template-columns:1fr 140px 140px auto;gap:6px;padding:10px 12px;background:var(--bg);border:1.5px dashed var(--line-strong);border-radius:10px;margin-top:8px}
+@media (max-width:620px){.add-item{grid-template-columns:1fr 1fr}}
+.add-item input,.add-item select{padding:7px 9px;font-size:13px}
+/* team view */
+.tv{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.tv-col{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tv-col>header{padding:11px 14px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.tv-col>header b{font-size:14px;font-weight:900}
+.tv-col>header .stats{display:flex;gap:6px}
+.tv-col>header .stats span{font-size:10.5px;font-weight:900;padding:2px 7px;border-radius:99px;background:rgba(255,255,255,.2)}
+.tv-item{padding:9px 14px;border-top:1px solid var(--line);cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.tv-item:hover{background:var(--bg)}
+.tv-item .nm{font-weight:900;font-size:13px}
+.tv-item .rf{font-size:11.5px;color:var(--ink-2)}
+.tv-item .r{margin-left:auto;text-align:right;white-space:nowrap}
+.tv-item .r .dd{font-size:11px;color:var(--ink-3)}
+.tv-empty{padding:16px 14px;font-size:12.5px;color:var(--ink-3)}
+.banner{background:var(--amber-tint);border:1px solid var(--amber);border-radius:10px;padding:9px 14px;font-size:12.5px;margin-bottom:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.banner.info{background:var(--peri-tint);border-color:var(--peri)}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;z-index:2000;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.legend{display:flex;gap:6px;flex-wrap:wrap}
+.legend span{font-size:10px;font-weight:900;padding:2px 7px;border-radius:10px;border:1px solid transparent}
+.help{font-size:11.5px;color:var(--ink-3);margin-top:4px}
+.linkrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.linkrow a{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--green-tint);color:var(--green-deep);text-decoration:none;border:1px solid transparent}
+.linkrow a:hover{border-color:var(--green)}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+(function(){
+const { useState, useEffect, useMemo, useRef, useCallback, Fragment } = React;
+const html = htm.bind(React.createElement);
+const APP_VERSION = "1.5";
+const THEME_KEY = "ka-rfp-theme";
+function readTheme(){ try{ return localStorage.getItem(THEME_KEY)||"light"; }catch(e){ return "light"; } }
+function applyTheme(t){ const el=document.documentElement; if(t==="auto") el.removeAttribute("data-theme"); else el.setAttribute("data-theme",t); try{ localStorage.setItem(THEME_KEY,t); }catch(e){} }
+applyTheme(readTheme());
+
+/* ───────── Reference data (Khan Academy District RFx process) ───────── */
+const TEAMS = {
+  "RFP Manager":  { color:"#0C2F6B", tint:"var(--tt-rfp)",   text:"var(--t-rfp)" },
+  "Sales":        { color:"#14BF96", tint:"var(--tt-sales)", text:"var(--t-sales)" },
+  "Legal":        { color:"#5F5FFF", tint:"var(--tt-legal)", text:"var(--t-legal)" },
+  "IT / Security":{ color:"#EF6B3B", tint:"var(--tt-it)",    text:"var(--t-it)" },
+  "Finance":      { color:"#F2A900", tint:"var(--tt-fin)",   text:"var(--t-fin)" },
+  "Leadership":   { color:"#E85CB0", tint:"var(--tt-lead)",  text:"var(--t-lead)" },
+  "Other":        { color:"#7B8494", tint:"var(--tt-other)", text:"var(--t-other)" },
+};
+const TEAM_LIST = Object.keys(TEAMS);
+const T = (t) => TEAMS[t] || TEAMS.Other;
+
+const STATUSES = ["Qualifying","Go/No-Go","In Progress","Submitted","Short Listed","Won","Lost","Cancelled","No Bid"];
+const STATUS_STYLE = {
+  "Qualifying":   { bg:"#E4EAF6", text:"#0C2F6B", dot:"#0C2F6B", top:"#0C2F6B" },
+  "Go/No-Go":     { bg:"#FFF4D6", text:"#9C6D00", dot:"#F2A900", top:"#F2A900" },
+  "In Progress":  { bg:"#E3F7F1", text:"#0E9A78", dot:"#14BF96", top:"#14BF96" },
+  "Submitted":    { bg:"#ECECFF", text:"#4343D9", dot:"#5F5FFF", top:"#5F5FFF" },
+  "Short Listed": { bg:"#FDEBE3", text:"#C64E22", dot:"#EF6B3B", top:"#EF6B3B" },
+  "Won":          { bg:"#DFF5EC", text:"#13674F", dot:"#14BF96", top:"#14BF96" },
+  "Lost":         { bg:"#FDE7EA", text:"#A41B2E", dot:"#D7263D", top:"#D7263D" },
+  "Cancelled":    { bg:"#EFEDE6", text:"#5F5A4B", dot:"#9A9484", top:"#9A9484" },
+  "No Bid":       { bg:"#EFEDE6", text:"#5F5A4B", dot:"#9A9484", top:"#9A9484" },
+};
+const OPEN = ["Qualifying","Go/No-Go","In Progress","Short Listed"];       // still has live work
+const ITEM_STATUSES = ["Not Started","In Progress","Complete","Blocked"];
+
+const TABS = [
+  { key:"pipeline", label:"Qualifying & Go/No-Go", statuses:["Qualifying","Go/No-Go"] },
+  { key:"active",   label:"In Progress",           statuses:["In Progress","Short Listed"] },
+  { key:"closed",   label:"Submitted & Closed",    statuses:["Submitted","Won","Lost","Cancelled","No Bid"] },
+  { key:"team",     label:"By Team" },
+];
+
+const STATES = ["","AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","PR"];
+const METHODS = ["","Bid portal","Email","Mail / hard copy","Hand delivery","BidNet","Bonfire","OpenGov","Ion Wave","Jaggaer","Periscope","Other"];
+const PRODUCTS = ["Khan Academy Districts","Khanmigo","Learning Paths","Khan Kids","Other"];
+const SEC_REVIEWS = ["DPA","VPAT / Accessibility","Security questionnaire","SOC 2","LMS / SSO integration","Insurance (COI)","Background checks"];
+const GRADES = ["Pre-K","K","1","2","3","4","5","6","7","8","9","10","11","12"];
+
+/* Standard checklist — team ownership + days before the submission deadline.
+   Offsets follow the 15-day flow in Khan's RFx process page. */
+const STANDARD_ITEMS = [
+  { name:"Qualify opportunity & record Go/No-Go",      team:"RFP Manager",  off:13 },
+  { name:"Sales Go decision",                         team:"Sales",        off:13 },
+  { name:"T&C review & GO confirmation",              team:"Legal",        off:11 },
+  { name:"Kickoff: channel, VR, Drive, timeline, Q&A",team:"RFP Manager",  off:11 },
+  { name:"Message focus & value proposition",         team:"Sales",        off:10 },
+  { name:"Exceptions / deviations report",            team:"Legal",        off:4  },
+  { name:"Security questionnaire",                    team:"IT / Security",off:5  },
+  { name:"SOC 2 report & VPAT",                       team:"IT / Security",off:5  },
+  { name:"Pricing / cost proposal",                   team:"Sales",        off:5  },
+  { name:"References",                                team:"Sales",        off:5  },
+  { name:"Form approval (unsigned forms to Legal)",   team:"Legal",        off:5  },
+  { name:"Certificate of insurance / W-9",            team:"Finance",      off:5  },
+  { name:"Draft V1 to opportunity owner (first look)",team:"RFP Manager",  off:6  },
+  { name:"First-look review & sign-off",              team:"Sales",        off:3  },
+  { name:"Signatures (Director / Chief)",             team:"Leadership",   off:2  },
+  { name:"Final version sign-off",                    team:"Legal",        off:2  },
+  { name:"Proof, package & submit",                   team:"RFP Manager",  off:0  },
+];
+
+/* RFP Manager milestones shown as a process bar; matched to items by keyword */
+const MILESTONES = [
+  { label:"Go/No-Go", match:/go\/no-go|qualify/i, team:"RFP Manager" },
+  { label:"Kickoff",  match:/kickoff/i,           team:"RFP Manager" },
+  { label:"Draft V1", match:/draft v1|first look/i, team:"RFP Manager" },
+  { label:"Signatures", match:/signature/i,       team:"Leadership" },
+  { label:"Submit",   match:/submit/i,            team:"RFP Manager" },
+];
+
+const BLANK = {
+  district:"", title:"", bidNumber:"", state:"", status:"Qualifying",
+  dueDate:"", dueTime:"", qaDueDate:"", preBidDate:"", preBidLink:"",
+  submissionMethod:"", submissionUrl:"", submissionNotes:"",
+  oppOwner:"", rfpManager:"", legalLead:"",
+  estValue:"", students:"", products:[], securityReviews:[], grades:[], scopeNotes:"",
+  contactName:"", contactRole:"", contactEmail:"", contactPhone:"",
+  links:{ rfpDoc:"", slack:"", drive:"", vr:"", salesforce:"" },
+  goNoGo:{ sales:"", legal:"", date:"", notes:"" },
+  items:[], notes:"",
+};
+
+/* ───────── helpers ───────── */
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+const todayStr = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+function daysUntil(s){ if(!s) return null; const due=new Date(s+"T23:59:59"); return Math.ceil((due-new Date())/86400000); }
+function fmt(s){ if(!s) return "—"; return new Date(s+"T00:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); }
+function fmtShort(s){ if(!s) return "No date"; return new Date(s+"T00:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"}); }
+function shift(dateStr, daysBefore){ if(!dateStr) return ""; const d=new Date(dateStr+"T00:00:00"); d.setDate(d.getDate()-daysBefore); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; }
+function urgency(d, closed){
+  if(closed) return null;
+  if(d===null) return null;
+  if(d<0)  return { label:"Overdue",       bg:"#FDE7EA", color:"#A41B2E" };
+  if(d===0)return { label:"Due today",     bg:"#FDE7EA", color:"#A41B2E" };
+  if(d<=3) return { label:`${d}d left`,    bg:"#FDE7EA", color:"#A41B2E" };
+  if(d<=7) return { label:`${d}d left`,    bg:"#FDEBE3", color:"#C64E22" };
+  if(d<=14)return { label:`${d}d left`,    bg:"#FFF4D6", color:"#9C6D00" };
+  return          { label:`${d}d left`,    bg:"#E3F7F1", color:"#0E9A78" };
+}
+function tlColor(d){
+  if(d===null) return { color:"#8A91A3", bg:"#F1EFE7" };
+  if(d<0) return { color:"#A41B2E", bg:"#FDE7EA" };
+  if(d<=3) return { color:"#C64E22", bg:"#FDEBE3" };
+  if(d<=7) return { color:"#9C6D00", bg:"#FFF4D6" };
+  if(d<=14) return { color:"#0E9A78", bg:"#E3F7F1" };
+  return { color:"#0C2F6B", bg:"#E4EAF6" };
+}
+const LEGEND = [["Overdue","#A41B2E","#FDE7EA"],["≤ 3 days","#C64E22","#FDEBE3"],["≤ 7 days","#9C6D00","#FFF4D6"],["≤ 14 days","#0E9A78","#E3F7F1"],["Later","#0C2F6B","#E4EAF6"]];
+const normalize = (r) => ({ ...BLANK, ...r, links:{...BLANK.links, ...(r.links||{})}, goNoGo:{...BLANK.goNoGo, ...(r.goNoGo||{})},
+  items:Array.isArray(r.items)?r.items:[], products:r.products||[], securityReviews:r.securityReviews||[], grades:r.grades||[] });
+const openItems = (r) => (r.items||[]).filter(i => i.status!=="Complete");
+const nextItem = (r) => openItems(r).filter(i=>i.dueDate).sort((a,b)=>a.dueDate.localeCompare(b.dueDate))[0] || openItems(r)[0] || null;
+const isClosed = (s) => !OPEN.includes(s);
+
+/* ───────── persistence: shared db when available, localStorage otherwise ───────── */
+const LS_KEY = "ka-rfp-visibility-report";
+function readLocal(){ try{ return JSON.parse(localStorage.getItem(LS_KEY)||"[]"); }catch(e){ return []; } }
+function writeLocal(list){ try{ localStorage.setItem(LS_KEY, JSON.stringify(list)); }catch(e){} }
+
+/* ───────── small components ───────── */
+const Pill = ({bg,color,children,style,onClick}) => html`<span class="pill" onClick=${onClick} style=${{background:bg,color,cursor:onClick?"pointer":"default",...(style||{})}}>${children}</span>`;
+const StatusPill = ({s}) => { const c=STATUS_STYLE[s]||STATUS_STYLE.Qualifying; return html`<${Pill} bg=${c.bg} color=${c.text}><i class="dot" style=${{background:c.dot}}></i>${s}<//>`; };
+const TeamPill = ({t,small}) => html`<${Pill} bg=${T(t).tint} color=${T(t).text} style=${small?{fontSize:10,padding:"2px 8px"}:{}}><i class="dot" style=${{background:T(t).color}}></i>${t}<//>`;
+
+function Field({label,required,children,hint}){ return html`<label class="f"><span>${label}${required&&html` <b class="req">*</b>`}</span>${children}${hint&&html`<span class="help" style=${{fontWeight:400}}>${hint}</span>`}</label>`; }
+function Txt({label,required,value,onChange,placeholder,type="text",area,hint}){
+  return html`<${Field} label=${label} required=${required} hint=${hint}>${area
+    ? html`<textarea value=${value||""} onInput=${e=>onChange(e.target.value)} placeholder=${placeholder}></textarea>`
+    : html`<input type=${type} value=${value||""} onInput=${e=>onChange(e.target.value)} placeholder=${placeholder} />`}<//>`;
+}
+function Sel({label,required,value,onChange,options}){
+  return html`<${Field} label=${label} required=${required}><select value=${value||""} onChange=${e=>onChange(e.target.value)}>
+    ${options.map(o=>html`<option key=${o} value=${o}>${o||"— Select —"}</option>`)}</select><//>`;
+}
+function Multi({label,selected,options,onChange}){
+  const tog=o=>onChange(selected.includes(o)?selected.filter(x=>x!==o):[...selected,o]);
+  return html`<div class="f" style=${{display:"flex",flexDirection:"column",gap:4}}><span style=${{fontSize:12,fontWeight:700,color:"var(--ink-2)"}}>${label}</span>
+    <div class="multi">${options.map(o=>html`<button type="button" key=${o} class=${selected.includes(o)?"on":""} onClick=${()=>tog(o)}>${o}</button>`)}</div></div>`;
+}
+
+/* ───────── summary ───────── */
+function Summary({rfps,tab}){
+  const open = rfps.filter(r=>OPEN.includes(r.status));
+  const allOpenItems = open.flatMap(r=>openItems(r).map(i=>({...i, rfp:r})));
+  const itemsOverdue = allOpenItems.filter(i=>{const d=daysUntil(i.dueDate);return d!==null&&d<0;}).length;
+  const itemsWeek = allOpenItems.filter(i=>{const d=daysUntil(i.dueDate);return d!==null&&d>=0&&d<=7;}).length;
+  const rfpsWeek = open.filter(r=>{const d=daysUntil(r.dueDate);return d!==null&&d>=0&&d<=7;}).length;
+  const rfpsOverdue = open.filter(r=>{const d=daysUntil(r.dueDate);return d!==null&&d<0;}).length;
+  const n = s => rfps.filter(r=>r.status===s).length;
+  const sets = {
+    pipeline:[["Qualifying",n("Qualifying"),"var(--t-rfp)"],["Awaiting Go/No-Go",n("Go/No-Go"),"#F2A900"],["Submissions due ≤ 7 days",rfpsWeek,"#EF6B3B"],["Won this year",n("Won"),"#14BF96"]],
+    active:[["In progress",n("In Progress")+n("Short Listed"),"#14BF96"],["Submissions due ≤ 7 days",rfpsWeek,"#EF6B3B"],["Documents due ≤ 7 days",itemsWeek,"#F2A900"],["Documents overdue",itemsOverdue,"#D7263D"]],
+    closed:[["Submitted",n("Submitted"),"#5F5FFF"],["Short listed",n("Short Listed"),"#EF6B3B"],["Won",n("Won"),"#14BF96"],["Lost / No bid",n("Lost")+n("No Bid")+n("Cancelled"),"#D7263D"]],
+    team:[["Open documents",allOpenItems.length,"var(--t-rfp)"],["Due ≤ 7 days",itemsWeek,"#F2A900"],["Overdue",itemsOverdue,"#D7263D"],["Submissions overdue",rfpsOverdue,"#EF6B3B"]],
+  };
+  return html`<div class="sum">${(sets[tab]||sets.active).map(([l,v,c])=>html`<div key=${l} style=${{borderLeftColor:c}}><div class="v" style=${{color:c}}>${v}</div><div class="l">${l}</div></div>`)}</div>`;
+}
+
+/* ───────── deadlines: timeline + list, submissions and documents ───────── */
+function Deadlines({rfps,onOpen}){
+  const [collapsed,setCollapsed]=useState(false);
+  const [mode,setMode]=useState("timeline");
+  const [show,setShow]=useState("both");            // both | rfps | docs
+  const [teamFilter,setTeamFilter]=useState(null);
+  const open = rfps.filter(r=>OPEN.includes(r.status));
+  const nodes = useMemo(()=>{
+    const out=[];
+    if(show!=="docs") open.forEach(r=>out.push({kind:"rfp",date:r.dueDate||"",rfp:r,key:"r"+r.id}));
+    if(show!=="rfps") open.forEach(r=>openItems(r).forEach(i=>{ if(!teamFilter||i.team===teamFilter) out.push({kind:"doc",date:i.dueDate||"",rfp:r,item:i,key:"d"+i.id}); }));
+    return out.sort((a,b)=>{ if(!a.date&&!b.date) return 0; if(!a.date) return 1; if(!b.date) return -1; return a.date.localeCompare(b.date)||(a.kind==="rfp"?1:-1); });
+  },[rfps,show,teamFilter]);
+  if(open.length===0) return null;
+  return html`<div class="panel">
+    <div class="panel-h">
+      <div style=${{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"}}>
+        <h2>Upcoming deadlines</h2>
+        <${Pill} bg="var(--green-tint)" color="var(--green-deep)">${nodes.length} on the horizon<//>
+        ${!collapsed&&html`<div class="seg">${["timeline","list"].map(m=>html`<button key=${m} class=${mode===m?"on":""} onClick=${()=>setMode(m)}>${m==="timeline"?"Timeline":"List"}</button>`)}</div>`}
+        ${!collapsed&&html`<div class="seg">${[["both","Submissions + documents"],["rfps","Submissions"],["docs","Documents"]].map(([k,l])=>html`<button key=${k} class=${show===k?"on":""} onClick=${()=>setShow(k)}>${l}</button>`)}</div>`}
+      </div>
+      <div style=${{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"}}>
+        ${!collapsed&&html`<div class="legend">${LEGEND.map(([l,c,b])=>html`<span key=${l} style=${{color:c,background:b,borderColor:c+"44"}}>${l}</span>`)}</div>`}
+        <button class="btn ghost small" onClick=${()=>setCollapsed(c=>!c)}>${collapsed?"Show ▼":"Hide ▲"}</button>
+      </div>
+    </div>
+    ${!collapsed&&show!=="rfps"&&html`<div style=${{display:"flex",gap:6,flexWrap:"wrap",marginTop:12}}>
+      <button class=${"chip"+(teamFilter?"":" on")} style=${teamFilter?{}:{background:"var(--navy)",borderColor:"var(--navy)"}} onClick=${()=>setTeamFilter(null)}>All teams</button>
+      ${TEAM_LIST.map(t=>html`<button key=${t} class=${"chip"+(teamFilter===t?" on":"")} style=${teamFilter===t?{background:T(t).color,borderColor:T(t).color}:{}} onClick=${()=>setTeamFilter(teamFilter===t?null:t)}>${t}</button>`)}
+    </div>`}
+    ${!collapsed&&(mode==="timeline"?html`<${Timeline} nodes=${nodes} onOpen=${onOpen} />`:html`<${DeadlineList} nodes=${nodes} onOpen=${onOpen} />`)}
+  </div>`;
+}
+function Timeline({nodes,onOpen}){
+  return html`<div class="tl"><div class="tl-track">
+    <div class="tl-line"></div>
+    <div class="tl-today"><span>TODAY</span><i></i></div>
+    <div class="tl-row">
+      ${nodes.map(n=>{ const d=daysUntil(n.date); const c=tlColor(d);
+        return html`<div class="tl-node" key=${n.key}>
+          <div class="tl-date" style=${{color:c.color,background:c.bg,borderColor:c.color+"44"}}>${n.date?fmtShort(n.date):"No date"}</div>
+          <div class="tl-tick" style=${{background:n.kind==="doc"?T(n.item.team).color:c.color}}></div>
+          <${DeadlineCard} node=${n} onOpen=${onOpen} />
+        </div>`;})}
+      ${nodes.length===0&&html`<div style=${{color:"var(--ink-3)",paddingTop:8}}>Nothing to show for this filter.</div>`}
+    </div></div></div>`;
+}
+function DeadlineCard({node,onOpen}){
+  const d=daysUntil(node.date); const u=urgency(d,false);
+  if(node.kind==="rfp"){ const r=node.rfp;
+    return html`<div class="dcard" style=${{borderTop:`3px solid ${STATUS_STYLE[r.status].top}`}} onClick=${()=>onOpen(r)}>
+      <div class="t">${r.district}</div><div class="s">${r.title}</div>
+      <div style=${{display:"flex",gap:4,flexWrap:"wrap"}}><${StatusPill} s=${r.status}/>${u?html`<${Pill} bg=${u.bg} color=${u.color}>${u.label}<//>`:html`<${Pill} bg="#F1EFE7" color="#8A91A3">No date<//>`}</div>
+      <div style=${{fontSize:10.5,color:"var(--ink-3)",marginTop:6,fontWeight:700}}>Submission deadline${r.dueTime?` · ${r.dueTime}`:""}</div>
+    </div>`; }
+  const i=node.item, r=node.rfp, t=T(i.team);
+  return html`<div class="dcard doc" style=${{borderLeftColor:t.color,background:t.tint}} onClick=${()=>onOpen(r)}>
+    <div class="t" style=${{fontSize:12}}>${i.name}</div><div class="s">${r.district}</div>
+    <div style=${{display:"flex",gap:4,flexWrap:"wrap"}}><${TeamPill} t=${i.team} small=${true}/>${u?html`<${Pill} bg=${u.bg} color=${u.color} style=${{fontSize:10,padding:"2px 8px"}}>${u.label}<//>`:null}</div>
+    ${i.owner&&html`<div style=${{fontSize:10.5,color:"var(--ink-3)",marginTop:6}}>${i.owner}</div>`}
+  </div>`;
+}
+function DeadlineList({nodes,onOpen}){
+  if(nodes.length===0) return html`<div style=${{color:"var(--ink-3)",padding:"12px 0"}}>Nothing to show for this filter.</div>`;
+  return html`<div style=${{marginTop:14}}>${nodes.map(n=>{ const d=daysUntil(n.date); const u=urgency(d,false);
+    const isDoc=n.kind==="doc"; const r=n.rfp;
+    return html`<div class=${"lrow"+(isDoc?" doc":"")} key=${n.key} style=${{borderLeftColor:isDoc?T(n.item.team).color:STATUS_STYLE[r.status].top}} onClick=${()=>onOpen(r)}>
+      <div><div class="t">${isDoc?n.item.name:r.district}</div><div class="s">${isDoc?`${r.district}${n.item.owner?" · "+n.item.owner:""}`:r.title+" · submission"}</div></div>
+      <div class="r">${isDoc?html`<${TeamPill} t=${n.item.team} small=${true}/>`:html`<${StatusPill} s=${r.status}/>`}
+        ${u?html`<${Pill} bg=${u.bg} color=${u.color}>${u.label}<//>`:html`<${Pill} bg="#F1EFE7" color="#8A91A3">No date<//>`}
+        <span style=${{fontSize:11.5,color:"var(--ink-3)",whiteSpace:"nowrap"}}>${fmt(n.date)}</span></div>
+    </div>`; })}</div>`;
+}
+
+/* ───────── RFP card ───────── */
+function RFPCard({r,onOpen}){
+  const d=daysUntil(r.dueDate), u=urgency(d,isClosed(r.status));
+  const items=r.items||[]; const done=items.filter(i=>i.status==="Complete").length;
+  const byTeam=TEAM_LIST.map(t=>({t,n:items.filter(i=>i.team===t&&i.status!=="Complete").length})).filter(x=>x.n>0);
+  const nx=nextItem(r); const nd=nx?daysUntil(nx.dueDate):null; const nu=nx?urgency(nd,false):null;
+  return html`<div class="card" style=${{borderTopColor:STATUS_STYLE[r.status].top}} onClick=${()=>onOpen(r)}>
+    <div style=${{display:"flex",justifyContent:"space-between",gap:8,alignItems:"flex-start"}}>
+      <div style=${{minWidth:0,flex:1}}><div class="d">${r.district}</div><div class="t">${r.bidNumber?r.bidNumber+" · ":""}${r.title}</div></div>
+      ${r.state&&html`<${Pill} bg="var(--green-tint)" color="var(--green-deep)">${r.state}<//>`}
+    </div>
+    ${r.products?.length>0&&html`<div style=${{fontSize:11,color:"var(--green-deep)",fontWeight:700,marginTop:6,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>${r.products.join(" · ")}</div>`}
+    <div style=${{display:"flex",gap:6,flexWrap:"wrap",alignItems:"center",marginTop:10}}>
+      <${StatusPill} s=${r.status}/>${u&&html`<${Pill} bg=${u.bg} color=${u.color}>${u.label}<//>`}
+      ${r.dueDate&&html`<span style=${{fontSize:12,color:"var(--ink-3)",marginLeft:"auto"}}>Due ${fmt(r.dueDate)}</span>`}
+    </div>
+    <div class="meta">
+      ${r.rfpManager&&html`<span>✍️ ${r.rfpManager}</span>`}
+      ${r.oppOwner&&html`<span>🤝 ${r.oppOwner}</span>`}
+      ${r.submissionMethod&&html`<span>📨 ${r.submissionMethod}</span>`}
+    </div>
+    ${items.length>0&&html`<${Fragment}>
+      <div style=${{display:"flex",justifyContent:"space-between",fontSize:11,marginTop:10,color:"var(--ink-2)",fontWeight:700}}><span>Documents & tasks</span><span style=${{color:done===items.length?"var(--green-deep)":"inherit"}}>${done}/${items.length} complete${done===items.length?" ✓":""}</span></div>
+      <div class="teambar">${byTeam.map(x=>html`<i key=${x.t} title=${`${x.t}: ${x.n} open`} style=${{width:`${100*x.n/Math.max(1,items.length-done)}%`,background:T(x.t).color}}></i>`)}</div>
+      <div style=${{display:"flex",gap:4,flexWrap:"wrap",marginTop:6}}>${byTeam.map(x=>html`<span key=${x.t} style=${{fontSize:10,fontWeight:900,color:T(x.t).text}}>${x.t} ${x.n}</span>`)}</div>
+    <//>`}
+    ${nx&&!isClosed(r.status)&&html`<div class="nextup"><b style=${{color:T(nx.team).text}}>Next:</b><span style=${{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>${nx.name}</span>${nu&&html`<${Pill} bg=${nu.bg} color=${nu.color} style=${{marginLeft:"auto",fontSize:10}}>${nu.label}<//>`}</div>`}
+  </div>`;
+}
+
+/* ───────── action items (documents & tasks) editor ───────── */
+function ItemRow({item,onChange,onDelete,readOnly}){
+  const [open,setOpen]=useState(false);
+  const [name,setName]=useState(item.name); const [owner,setOwner]=useState(item.owner||"");
+  const [link,setLink]=useState(item.link||""); const [note,setNote]=useState(item.notes||"");
+  useEffect(()=>{setName(item.name);setOwner(item.owner||"");setLink(item.link||"");setNote(item.notes||"");},[item.id,item.name,item.owner,item.link,item.notes]);
+  const cycle=()=>{ const o=["Not Started","In Progress","Complete","Blocked"]; onChange({status:o[(o.indexOf(item.status)+1)%o.length]}); };
+  const cls={"In Progress":"ip","Complete":"dn","Blocked":"bl"}[item.status]||"";
+  const d=daysUntil(item.dueDate); const u=item.status!=="Complete"?urgency(d,false):null;
+  const commit=(k,v)=>{ if((item[k]||"")!==v) onChange({[k]:v}); };
+  return html`<div class=${"item"+(item.status==="Complete"?" done":"")}>
+    <button class=${"st "+cls} title=${item.status+" — click to change"} onClick=${cycle} disabled=${readOnly}>${item.status==="Complete"?"✓":item.status==="In Progress"?"›":item.status==="Blocked"?"!":""}</button>
+    <div style=${{minWidth:0}}>
+      <input class="nm" value=${name} onInput=${e=>setName(e.target.value)} onBlur=${()=>commit("name",name)} readOnly=${readOnly} style=${{border:"none",background:"transparent",padding:"2px 4px"}}/>
+      <div style=${{display:"flex",gap:6,alignItems:"center",paddingLeft:4,flexWrap:"wrap"}}>
+        ${u&&html`<span class="due-tag" style=${{color:u.color}}>${u.label}</span>`}
+        <button class="btn ghost small" style=${{padding:"0 4px",fontSize:11}} onClick=${()=>setOpen(o=>!o)}>${open?"less ▲":"details ▼"}</button>
+        ${item.link&&html`<a href=${item.link} target="_blank" rel="noreferrer" style=${{fontSize:11,fontWeight:700}}>open link</a>`}
+      </div>
+    </div>
+    <input class="ow" placeholder="Owner" value=${owner} onInput=${e=>setOwner(e.target.value)} onBlur=${()=>commit("owner",owner)} readOnly=${readOnly}/>
+    <input class="du" type="date" value=${item.dueDate||""} onChange=${e=>onChange({dueDate:e.target.value})} disabled=${readOnly}/>
+    <button class="x" style=${{fontSize:16,color:"var(--ink-3)"}} title="Remove" onClick=${()=>{ if(confirm("Remove this item?")) onDelete(); }} disabled=${readOnly}>✕</button>
+    ${open&&html`<div class="extra">
+      <select value=${item.team} onChange=${e=>onChange({team:e.target.value})} disabled=${readOnly}>${TEAM_LIST.map(t=>html`<option key=${t}>${t}</option>`)}</select>
+      <select value=${item.status} onChange=${e=>onChange({status:e.target.value})} disabled=${readOnly}>${ITEM_STATUSES.map(s=>html`<option key=${s}>${s}</option>`)}</select>
+      <input placeholder="Link (Drive, Slack thread, portal…)" value=${link} onInput=${e=>setLink(e.target.value)} onBlur=${()=>commit("link",link)} readOnly=${readOnly}/>
+      <input placeholder="Notes" value=${note} onInput=${e=>setNote(e.target.value)} onBlur=${()=>commit("notes",note)} readOnly=${readOnly}/>
+    </div>`}
+  </div>`;
+}
+function ActionItems({r,onUpdate,readOnly,toast}){
+  const [nName,setNName]=useState(""); const [nTeam,setNTeam]=useState("RFP Manager"); const [nDue,setNDue]=useState("");
+  const items=r.items||[];
+  const save=list=>onUpdate({items:list});
+  const add=()=>{ if(!nName.trim()) return; save([...items,{id:uid(),name:nName.trim(),team:nTeam,owner:"",dueDate:nDue,status:"Not Started",link:"",notes:""}]); setNName(""); setNDue(""); };
+  const addStandard=()=>{
+    const existing=new Set(items.map(i=>i.name.toLowerCase()));
+    const add=STANDARD_ITEMS.filter(s=>!existing.has(s.name.toLowerCase())).map(s=>({id:uid(),name:s.name,team:s.team,owner:"",dueDate:shift(r.dueDate,s.off),status:"Not Started",link:"",notes:""}));
+    if(add.length===0){ toast("Standard checklist already added"); return; }
+    save([...items,...add]); toast(`Added ${add.length} standard items${r.dueDate?" with suggested dates":""}`);
+  };
+  const autoSchedule=()=>{
+    if(!r.dueDate){ toast("Set the submission due date first"); return; }
+    const map=new Map(STANDARD_ITEMS.map(s=>[s.name.toLowerCase(),s.off]));
+    let n=0; const list=items.map(i=>{ const off=map.get(i.name.toLowerCase()); if(off===undefined) return i; n++; return {...i,dueDate:shift(r.dueDate,off)}; });
+    save(list); toast(`Re-dated ${n} standard items from ${fmt(r.dueDate)}`);
+  };
+  const grouped=TEAM_LIST.map(t=>({t,list:items.filter(i=>i.team===t).sort((a,b)=>(a.dueDate||"9").localeCompare(b.dueDate||"9"))})).filter(g=>g.list.length>0);
+  const done=items.filter(i=>i.status==="Complete").length;
+  return html`<div class="sec">
+    <h4><span>Documents & tasks <span style=${{fontWeight:700,color:"var(--ink-3)"}}>${done}/${items.length} complete</span></span>
+      ${!readOnly&&html`<span style=${{display:"flex",gap:6}}><button class="btn outline small" onClick=${addStandard}>+ Standard checklist</button><button class="btn ghost small" onClick=${autoSchedule} title="Re-compute suggested dates for standard items from the submission deadline">Auto-date</button></span>`}</h4>
+    ${items.length===0&&html`<div class="box" style=${{textAlign:"center",color:"var(--ink-3)"}}>No documents or tasks yet. Add the standard Khan checklist (Go/No-Go, kickoff, legal review, security docs, pricing, signatures, submission) and dates will be suggested from the due date.</div>`}
+    ${grouped.map(g=>html`<div class="team-grp" key=${g.t}>
+      <header style=${{background:T(g.t).color}}><span>${g.t}</span><small>${g.list.filter(i=>i.status==="Complete").length}/${g.list.length} done</small></header>
+      ${g.list.map(i=>html`<${ItemRow} key=${i.id} item=${i} readOnly=${readOnly}
+        onChange=${patch=>save(items.map(x=>x.id===i.id?{...x,...patch}:x))}
+        onDelete=${()=>save(items.filter(x=>x.id!==i.id))} />`)}
+    </div>`)}
+    ${!readOnly&&html`<div class="add-item">
+      <input placeholder="Add a document or task…" value=${nName} onInput=${e=>setNName(e.target.value)} onKeyDown=${e=>e.key==="Enter"&&add()}/>
+      <select value=${nTeam} onChange=${e=>setNTeam(e.target.value)}>${TEAM_LIST.map(t=>html`<option key=${t}>${t}</option>`)}</select>
+      <input type="date" value=${nDue} onChange=${e=>setNDue(e.target.value)}/>
+      <button class="btn green small" onClick=${add} disabled=${!nName.trim()}>Add</button>
+    </div>`}
+  </div>`;
+}
+
+/* ───────── detail drawer ───────── */
+function Detail({r,onClose,onEdit,onDelete,onUpdate,readOnly,toast}){
+  const d=daysUntil(r.dueDate), u=urgency(d,isClosed(r.status));
+  const kv=(k,v)=>v?html`<div class="kv"><span>${k}: </span>${v}</div>`:null;
+  const link=(k,v,label)=>v?html`<div class="kv"><span>${k}: </span><a href=${v} target="_blank" rel="noreferrer">${label||v}</a></div>`:null;
+  const ms=MILESTONES.map(m=>{ const it=(r.items||[]).find(i=>m.match.test(i.name)); return {...m,it}; });
+  const g=r.goNoGo||{};
+  const setG=(k,v)=>onUpdate({goNoGo:{...g,[k]:v}});
+  const quick=s=>{ onUpdate({status:s}); toast(`Moved to ${s}`); };
+  return html`<div class="ovl right" onClick=${onClose}><div class="drawer" onClick=${e=>e.stopPropagation()}><div class="dt">
+    <div style=${{display:"flex",justifyContent:"space-between",gap:10,alignItems:"flex-start",marginBottom:14}}>
+      <div><h2>${r.district}</h2><div class="sub">${r.bidNumber?r.bidNumber+" · ":""}${r.title}</div></div>
+      <button class="x" onClick=${onClose} aria-label="Close">✕</button>
+    </div>
+    <div style=${{display:"flex",gap:6,flexWrap:"wrap",marginBottom:18}}>
+      <${StatusPill} s=${r.status}/>${u&&html`<${Pill} bg=${u.bg} color=${u.color}>${u.label}<//>`}
+      ${r.state&&html`<${Pill} bg="var(--green-tint)" color="var(--green-deep)">${r.state}<//>`}
+      ${r.products?.map(p=>html`<${Pill} key=${p} bg="var(--peri-tint)" color="#4343D9">${p}<//>`)}
+    </div>
+
+    <div class="sec"><h4>RFP Manager milestones</h4>
+      <div class="milestones">${ms.map(m=>{ const it=m.it; const dd=it?daysUntil(it.dueDate):null;
+        const cls=!it?"":it.status==="Complete"?"done":dd!==null&&dd<0?"late":dd!==null&&dd<=3?"soon":"";
+        return html`<div class=${"ms "+cls} key=${m.label}><b>${m.label}${it&&it.status==="Complete"?" ✓":""}</b>${it?html`<span>${it.dueDate?fmtShort(it.dueDate):"no date"}${it.owner?" · "+it.owner:""}</span>`:html`<span style=${{color:"var(--ink-3)"}}>not tracked</span>`}</div>`; })}
+      </div>
+    </div>
+
+    <div class="sec"><h4>Go / No-Go</h4>
+      <div class="gng">
+        <div><div class="k">Sales decision</div>${readOnly?html`<div class="vv">${g.sales||"—"}</div>`:html`<select value=${g.sales||""} onChange=${e=>setG("sales",e.target.value)} style=${{marginTop:4}}><option value="">Pending</option><option>Go</option><option>No-Go</option></select>`}</div>
+        <div><div class="k">Legal confirmation</div>${readOnly?html`<div class="vv">${g.legal||"—"}</div>`:html`<select value=${g.legal||""} onChange=${e=>setG("legal",e.target.value)} style=${{marginTop:4}}><option value="">Pending</option><option>Confirmed GO</option><option>Halted</option></select>`}</div>
+        <div><div class="k">Decision date</div>${readOnly?html`<div class="vv">${fmt(g.date)}</div>`:html`<input type="date" value=${g.date||""} onChange=${e=>setG("date",e.target.value)} style=${{marginTop:4}}/>`}</div>
+      </div>
+      <div class="help">Sales decides whether to pursue; Legal confirms the GO after the T&C review and can halt a response. Both are needed before "In Progress".</div>
+      ${!readOnly&&(r.status==="Qualifying"||r.status==="Go/No-Go")&&html`<div style=${{display:"flex",gap:8,marginTop:10,flexWrap:"wrap"}}>
+        ${r.status==="Qualifying"&&html`<button class="btn outline small" onClick=${()=>quick("Go/No-Go")}>Send to Go/No-Go</button>`}
+        <button class="btn green small" onClick=${()=>quick("In Progress")} disabled=${g.sales!=="Go"||g.legal!=="Confirmed GO"} title=${g.sales!=="Go"||g.legal!=="Confirmed GO"?"Needs Sales Go + Legal confirmation":""}>✓ GO confirmed → In Progress</button>
+        <button class="btn danger small" onClick=${()=>{ if(confirm("Archive as No Bid?")) quick("No Bid"); }}>Archive as No Bid</button>
+      </div>`}
+      ${!readOnly&&r.status==="In Progress"&&html`<div style=${{display:"flex",gap:8,marginTop:10,flexWrap:"wrap"}}><button class="btn primary small" onClick=${()=>quick("Submitted")}>Mark submitted</button></div>`}
+      ${!readOnly&&(r.status==="Submitted"||r.status==="Short Listed")&&html`<div style=${{display:"flex",gap:8,marginTop:10,flexWrap:"wrap"}}>
+        ${r.status==="Submitted"&&html`<button class="btn outline small" onClick=${()=>quick("Short Listed")}>Short listed</button>`}
+        <button class="btn green small" onClick=${()=>quick("Won")}>Won</button><button class="btn danger small" onClick=${()=>quick("Lost")}>Lost</button></div>`}
+    </div>
+
+    <${ActionItems} r=${r} onUpdate=${onUpdate} readOnly=${readOnly} toast=${toast}/>
+
+    <div class="sec"><h4>Deadline & submission</h4>
+      ${kv("Submission due",r.dueDate?`${fmt(r.dueDate)}${r.dueTime?" at "+r.dueTime:""}`:"")}
+      ${kv("Questions due",fmt(r.qaDueDate)==="—"?"":fmt(r.qaDueDate))}
+      ${kv("Pre-bid conference",r.preBidDate?fmt(r.preBidDate):"")}${link("Pre-bid link",r.preBidLink)}
+      ${kv("Method",r.submissionMethod)}${link("Portal / URL",r.submissionUrl)}
+      ${r.submissionNotes&&html`<div class="box" style=${{marginTop:6}}>${r.submissionNotes}</div>`}
+    </div>
+
+    <div class="sec"><h4>Team</h4>
+      ${kv("RFP Manager",r.rfpManager)}${kv("Opportunity owner (Sales)",r.oppOwner)}${kv("Legal reviewer",r.legalLead)}
+      ${(r.links.slack||r.links.drive||r.links.vr||r.links.salesforce||r.links.rfpDoc)&&html`<div class="linkrow">
+        ${r.links.rfpDoc&&html`<a href=${r.links.rfpDoc} target="_blank" rel="noreferrer">📄 RFP document</a>`}
+        ${r.links.slack&&html`<a href=${r.links.slack} target="_blank" rel="noreferrer">💬 Slack channel</a>`}
+        ${r.links.drive&&html`<a href=${r.links.drive} target="_blank" rel="noreferrer">📁 Drive folder</a>`}
+        ${r.links.vr&&html`<a href=${r.links.vr} target="_blank" rel="noreferrer">📊 Visibility Report</a>`}
+        ${r.links.salesforce&&html`<a href=${r.links.salesforce} target="_blank" rel="noreferrer">☁️ Salesforce</a>`}
+      </div>`}
+    </div>
+
+    ${(r.estValue||r.students||r.securityReviews?.length||r.grades?.length||r.scopeNotes)&&html`<div class="sec"><h4>Scope</h4>
+      ${kv("Estimated value",r.estValue)}${kv("Students served (est.)",r.students)}
+      ${r.grades?.length>0&&kv("Grades",r.grades.join(", "))}
+      ${r.securityReviews?.length>0&&html`<div class="kv"><span>Security & compliance reviews: </span><span style=${{display:"inline-flex",gap:4,flexWrap:"wrap"}}>${r.securityReviews.map(s=>html`<${Pill} key=${s} bg=${T("IT / Security").tint} color=${T("IT / Security").text}>${s}<//>`)}</span></div>`}
+      ${r.scopeNotes&&html`<div class="box" style=${{marginTop:6}}>${r.scopeNotes}</div>`}
+    </div>`}
+
+    ${(r.contactName||r.contactEmail)&&html`<div class="sec"><h4>District contact</h4>${kv("Name",r.contactName)}${kv("Role",r.contactRole)}${kv("Email",r.contactEmail)}${kv("Phone",r.contactPhone)}</div>`}
+    ${r.notes&&html`<div class="sec"><h4>Notes</h4><div class="box">${r.notes}</div></div>`}
+
+    ${!readOnly&&html`<div style=${{display:"flex",gap:10,paddingTop:6}}>
+      <button class="btn outline" onClick=${onEdit}>Edit RFP</button>
+      <button class="btn danger" onClick=${()=>{ if(confirm("Delete this RFP and all its items?")) onDelete(r.id); }}>Delete</button>
+    </div>`}
+  </div></div></div>`;
+}
+
+/* ───────── form ───────── */
+function Form({r,onSave,onClose}){
+  const [f,setF]=useState(()=>normalize(r||{}));
+  const set=k=>v=>setF(x=>({...x,[k]:v}));
+  const setL=k=>v=>setF(x=>({...x,links:{...x.links,[k]:v}}));
+  const valid=f.district.trim()&&f.title.trim();
+  return html`<div class="ovl center" onClick=${onClose}><div class="modal" onClick=${e=>e.stopPropagation()}>
+    <div class="modal-h"><h3>${r?"Edit RFP":"Add RFP"}</h3><button class="x" onClick=${onClose} aria-label="Close">✕</button></div>
+    <div class="modal-b">
+      <div class="fh">Opportunity</div>
+      <div class="g2"><${Txt} label="District / agency" required value=${f.district} onChange=${set("district")} placeholder="e.g. Humble ISD"/><${Txt} label="RFP title" required value=${f.title} onChange=${set("title")} placeholder="e.g. Math Intervention Programs"/></div>
+      <div class="g3" style=${{marginTop:14}}><${Txt} label="Bid / RFP number" value=${f.bidNumber} onChange=${set("bidNumber")} placeholder="e.g. ITB 26CURR1"/><${Sel} label="State" value=${f.state} onChange=${set("state")} options=${STATES}/><${Sel} label="Stage" value=${f.status} onChange=${set("status")} options=${STATUSES}/></div>
+      <div style=${{marginTop:14}}><${Multi} label="Products in scope" selected=${f.products} options=${PRODUCTS} onChange=${set("products")}/></div>
+      <div style=${{marginTop:14}}><${Multi} label="Security & compliance reviews required" selected=${f.securityReviews} options=${SEC_REVIEWS} onChange=${set("securityReviews")}/></div>
+      <div style=${{marginTop:14}}><${Multi} label="Grade levels" selected=${f.grades} options=${GRADES} onChange=${set("grades")}/></div>
+      <div class="g2" style=${{marginTop:14}}><${Txt} label="Estimated contract value" value=${f.estValue} onChange=${set("estValue")} placeholder="e.g. $250,000"/><${Txt} label="Students served (estimate)" value=${f.students} onChange=${set("students")} placeholder="e.g. 12,000"/></div>
+      <div style=${{marginTop:14}}><${Txt} label="Scope notes" area value=${f.scopeNotes} onChange=${set("scopeNotes")} placeholder="Angle for the response, sections we can't bid on, unusual terms to flag to Finance…"/></div>
+
+      <div class="fh">Team</div>
+      <div class="g3"><${Txt} label="RFP Manager" value=${f.rfpManager} onChange=${set("rfpManager")} placeholder="Owns Go/No-Go, kickoff, writing, submission"/><${Txt} label="Opportunity owner (Sales)" value=${f.oppOwner} onChange=${set("oppOwner")} placeholder="Decides to pursue; owns pricing & message"/><${Txt} label="Legal reviewer" value=${f.legalLead} onChange=${set("legalLead")} placeholder="Confirms GO, deviations"/></div>
+      <div class="g2" style=${{marginTop:14}}><${Txt} label="RFP document link" value=${f.links.rfpDoc} onChange=${setL("rfpDoc")} placeholder="https://drive.google.com/…"/><${Txt} label="Slack channel" value=${f.links.slack} onChange=${setL("slack")} placeholder="https://khanacademy.slack.com/…"/></div>
+      <div class="g3" style=${{marginTop:14}}><${Txt} label="Drive folder" value=${f.links.drive} onChange=${setL("drive")} placeholder="https://…"/><${Txt} label="Visibility Report (sheet)" value=${f.links.vr} onChange=${setL("vr")} placeholder="https://…"/><${Txt} label="Salesforce opportunity" value=${f.links.salesforce} onChange=${setL("salesforce")} placeholder="https://…"/></div>
+
+      <div class="fh">Deadlines & submission</div>
+      <div class="g3"><${Txt} label="Submission due date" type="date" value=${f.dueDate} onChange=${set("dueDate")}/><${Txt} label="Due time" value=${f.dueTime} onChange=${set("dueTime")} placeholder="e.g. 2:00 PM ET"/><${Txt} label="Questions due" type="date" value=${f.qaDueDate} onChange=${set("qaDueDate")}/></div>
+      <div class="g2" style=${{marginTop:14}}><${Txt} label="Pre-bid conference date" type="date" value=${f.preBidDate} onChange=${set("preBidDate")}/><${Txt} label="Pre-bid link / location" value=${f.preBidLink} onChange=${set("preBidLink")} placeholder="Zoom link or address"/></div>
+      <div class="g2" style=${{marginTop:14}}><${Sel} label="Submission method" value=${f.submissionMethod} onChange=${set("submissionMethod")} options=${METHODS}/><${Txt} label="Portal / submission URL" value=${f.submissionUrl} onChange=${set("submissionUrl")} placeholder="https://…"/></div>
+      <div style=${{marginTop:14}}><${Txt} label="Submission notes" area value=${f.submissionNotes} onChange=${set("submissionNotes")} placeholder="e.g. 3 hard copies + USB; separate pricing envelope; notarized affidavit"/></div>
+
+      <div class="fh">District contact</div>
+      <div class="g2"><${Txt} label="Name" value=${f.contactName} onChange=${set("contactName")}/><${Txt} label="Role" value=${f.contactRole} onChange=${set("contactRole")} placeholder="Purchasing agent"/></div>
+      <div class="g2" style=${{marginTop:14}}><${Txt} label="Email" type="email" value=${f.contactEmail} onChange=${set("contactEmail")}/><${Txt} label="Phone" value=${f.contactPhone} onChange=${set("contactPhone")}/></div>
+
+      <div class="fh">Notes</div>
+      <${Txt} label="Anything else the team should know" area value=${f.notes} onChange=${set("notes")}/>
+    </div>
+    <div class="modal-f"><button class="btn ghost" onClick=${onClose}>Cancel</button><button class="btn green" disabled=${!valid} onClick=${()=>onSave(f)}>${r?"Save changes":"Add RFP"}</button></div>
+  </div></div>`;
+}
+
+/* ───────── by-team view ───────── */
+function TeamView({rfps,onOpen}){
+  const [who,setWho]=useState("");
+  const [hideDone,setHideDone]=useState(true);
+  const open=rfps.filter(r=>OPEN.includes(r.status));
+  const all=open.flatMap(r=>(r.items||[]).map(i=>({...i,rfp:r})));
+  const people=[...new Set(all.map(i=>(i.owner||"").trim()).filter(Boolean))].sort();
+  const rows=all.filter(i=>(!hideDone||i.status!=="Complete")&&(!who||(i.owner||"").trim()===who));
+  return html`<div>
+    <div class="toolbar">
+      <select value=${who} onChange=${e=>setWho(e.target.value)}><option value="">Everyone</option>${people.map(p=>html`<option key=${p}>${p}</option>`)}</select>
+      <label style=${{display:"inline-flex",gap:6,alignItems:"center",fontSize:13,fontWeight:700,color:"var(--ink-2)",whiteSpace:"nowrap",cursor:"pointer"}}><input type="checkbox" style=${{width:16,height:16,padding:0,margin:0,flexShrink:0,accentColor:"#14BF96"}} checked=${hideDone} onChange=${e=>setHideDone(e.target.checked)}/>Hide completed</label>
+      <span style=${{fontSize:12,color:"var(--ink-3)"}}>Open RFPs only · sorted by due date</span>
+    </div>
+    <div class="tv">${TEAM_LIST.map(t=>{ const list=rows.filter(i=>i.team===t).sort((a,b)=>(a.dueDate||"9").localeCompare(b.dueDate||"9"));
+      const od=list.filter(i=>i.status!=="Complete"&&daysUntil(i.dueDate)!==null&&daysUntil(i.dueDate)<0).length;
+      const wk=list.filter(i=>{const d=daysUntil(i.dueDate);return i.status!=="Complete"&&d!==null&&d>=0&&d<=7;}).length;
+      return html`<div class="tv-col" key=${t}>
+        <header style=${{background:T(t).color}}><b>${t}</b><div class="stats"><span>${list.length} open</span>${wk>0&&html`<span>${wk} this week</span>`}${od>0&&html`<span style=${{background:"#fff",color:"#A41B2E"}}>${od} overdue</span>`}</div></header>
+        ${list.length===0&&html`<div class="tv-empty">Nothing assigned to ${t} right now.</div>`}
+        ${list.map(i=>{ const d=daysUntil(i.dueDate); const u=i.status!=="Complete"?urgency(d,false):null;
+          return html`<div class="tv-item" key=${i.id} onClick=${()=>onOpen(i.rfp)}>
+            <div style=${{minWidth:0}}><div class="nm" style=${i.status==="Complete"?{textDecoration:"line-through",opacity:.6}:{}}>${i.name}</div><div class="rf">${i.rfp.district}${i.owner?" · "+i.owner:""}${i.status==="Blocked"?" · ⚠ blocked":i.status==="In Progress"?" · in progress":""}</div></div>
+            <div class="r">${u?html`<${Pill} bg=${u.bg} color=${u.color}>${u.label}<//>`:i.status==="Complete"?html`<${Pill} bg="var(--green-tint)" color="var(--green-deep)">Done<//>`:html`<${Pill} bg="#F1EFE7" color="#8A91A3">No date<//>`}<div class="dd">${i.dueDate?fmt(i.dueDate):""}</div></div>
+          </div>`; })}
+      </div>`; })}</div>
+  </div>`;
+}
+
+/* ───────── app ───────── */
+function App(){
+  const [rfps,setRfps]=useState([]);
+  const [loaded,setLoaded]=useState(false);
+  const [storeMode,setStoreMode]=useState("local");
+  const [canWrite,setCanWrite]=useState(true);
+  const [tab,setTab]=useState("active");
+  const [search,setSearch]=useState("");
+  const [sort,setSort]=useState("dueDate");
+  const [viewId,setViewId]=useState(null);
+  const [editing,setEditing]=useState(null);     // null | "new" | rfp
+  const [toastMsg,setToastMsg]=useState("");
+  const [theme,setTheme]=useState(readTheme());
+  const dbRef=useRef(null); const dlRef=useRef(null);
+  const toast=useCallback(m=>{ setToastMsg(m); setTimeout(()=>setToastMsg(""),2200); },[]);
+
+  useEffect(()=>{
+    let unsub=null, cancelled=false;
+    (async()=>{
+      const local=readLocal(); if(!cancelled){ setRfps(local.map(normalize)); }
+      let db=null;
+      try{ db=window.claude&&window.claude.use?await window.claude.use("db"):null; }catch(e){ db=null; }
+      if(cancelled) return;
+      if(db){
+        dbRef.current=db; setStoreMode("db");
+        try{ const user=await window.claude.use("user"); if(user){ const w=await user.can("data.write"); if(w===false) setCanWrite(false); } }catch(e){}
+        unsub=db.collection("rfps").onSnapshot(snap=>{ setRfps(snap.docs.map(d=>normalize(d.data()))); setLoaded(true); },
+          err=>{ console.error(err); setLoaded(true); });
+      } else { setLoaded(true); }
+      try{ dlRef.current=window.claude&&window.claude.use?await window.claude.use("downloads"):null; }catch(e){}
+    })();
+    return ()=>{ cancelled=true; if(unsub) unsub(); };
+  },[]);
+
+  const persist=useCallback(async(list)=>{ if(storeMode!=="db") writeLocal(list); },[storeMode]);
+  const upsert=useCallback(async(r)=>{
+    const rec={...r, updatedAt:new Date().toISOString()};
+    setRfps(prev=>{ const i=prev.findIndex(x=>x.id===rec.id); const next=i>=0?prev.map(x=>x.id===rec.id?rec:x):[...prev,rec]; persist(next); return next; });
+    if(dbRef.current){ try{ await dbRef.current.doc("rfps/"+rec.id).set(rec); }catch(e){ console.error(e); if(e&&e.code==="invalid_argument") setCanWrite(false); toast("Could not save — check your access"); } }
+  },[persist,toast]);
+  const remove=useCallback(async(id)=>{
+    setRfps(prev=>{ const next=prev.filter(x=>x.id!==id); persist(next); return next; });
+    setViewId(null);
+    if(dbRef.current){ try{ await dbRef.current.doc("rfps/"+id).delete(); }catch(e){ console.error(e); } }
+  },[persist]);
+
+  const handleSave=f=>{ const rec=editing&&editing!=="new"?{...editing,...f}:{...f,id:uid(),createdAt:new Date().toISOString()}; upsert(rec); setEditing(null); setViewId(rec.id); toast(editing==="new"||!editing?"RFP added":"Saved"); };
+  const view=rfps.find(r=>r.id===viewId)||null;
+
+  const exportJson=async()=>{ const data=JSON.stringify(rfps,null,2); const name=`khan-rfp-tracker-${todayStr()}.json`;
+    if(dlRef.current){ try{ await dlRef.current.save({filename:name,data}); return; }catch(e){} }
+    try{ await navigator.clipboard.writeText(data); toast("JSON copied to clipboard"); }catch(e){ toast("Export unavailable here"); } };
+
+  const cur=TABS.find(t=>t.key===tab);
+  const filtered=tab==="team"?[]:rfps.filter(r=>cur.statuses.includes(r.status)).filter(r=>{ if(!search) return true; const s=search.toLowerCase();
+      return [r.district,r.title,r.bidNumber,r.state,r.rfpManager,r.oppOwner,r.legalLead,r.contactName,...(r.products||[])].some(v=>(v||"").toLowerCase().includes(s)); })
+    .sort((a,b)=>{ if(sort==="dueDate"){ if(!a.dueDate) return 1; if(!b.dueDate) return -1; return a.dueDate.localeCompare(b.dueDate); }
+      if(sort==="district") return a.district.localeCompare(b.district); if(sort==="status") return STATUSES.indexOf(a.status)-STATUSES.indexOf(b.status); return 0; });
+
+  return html`<div>
+    <header class="hdr"><div class="wrap">
+      <div class="hdr-top">
+        <div class="brand">
+          <svg class="hex" viewBox="0 0 40 44" aria-hidden="true"><path d="M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z" fill="#14BF96"/></svg>
+          <div><h1>Khan Academy Districts · RFP Visibility Report</h1><p>Who owns what, and when it's due — across every open bid <span style=${{opacity:.5}}>· v${APP_VERSION}</span></p></div>
+        </div>
+        <div class="hdr-actions">
+          <${Pill} bg=${storeMode==="db"?"rgba(20,191,150,.25)":"rgba(255,255,255,.14)"} color="#fff">${storeMode==="db"?"● Shared live data":"○ Saved in this browser only"}<//>
+          <div class="seg" style=${{borderColor:"rgba(255,255,255,.35)"}} title="Color mode">${[["light","☀ Light"],["auto","Auto"],["dark","☾ Dark"]].map(([k,l])=>html`<button key=${k} class=${theme===k?"on":""} style=${theme===k?{background:"var(--green)",color:"#042A20"}:{color:"#fff"}} onClick=${()=>{setTheme(k);applyTheme(k);}}>${l}</button>`)}</div>
+          <button class="btn ghost small" style=${{color:"#fff"}} onClick=${exportJson}>Export JSON</button>
+          ${canWrite&&html`<button class="btn green" onClick=${()=>setEditing("new")}>+ New RFP</button>`}
+        </div>
+      </div>
+      <div class="stage-strip">
+        <div><span class="n">1</span><b>Qualify</b> RFP Manager + Sales</div>
+        <div><span class="n">2</span><b>Go/No-Go</b> Sales decides · Legal confirms</div>
+        <div><span class="n">3</span><b>Kickoff & drafts</b> RFP Manager · SMEs</div>
+        <div><span class="n">4</span><b>Approvals</b> Legal · Leadership signatures</div>
+        <div><span class="n">5</span><b>Proof & submit</b> RFP Manager</div>
+        <div><span class="n">6</span><b>Short list → award</b> Sales</div>
+      </div>
+    </div></header>
+
+    <main class="wrap">
+      ${!canWrite&&html`<div class="banner">👀 You're viewing in read-only mode. Ask the RFP Manager for Contributor access to update items.</div>`}
+      <${Summary} rfps=${rfps} tab=${tab}/>
+      <${Deadlines} rfps=${rfps} onOpen=${r=>setViewId(r.id)}/>
+      <div class="tabs">${TABS.map(t=>{ const n=t.statuses?rfps.filter(r=>t.statuses.includes(r.status)).length:rfps.filter(r=>OPEN.includes(r.status)).reduce((s,r)=>s+openItems(r).length,0);
+        return html`<button key=${t.key} class=${tab===t.key?"on":""} onClick=${()=>{setTab(t.key);setSearch("");}}>${t.label}<span class="cnt">${n}</span></button>`; })}</div>
+      ${tab==="team"?html`<${TeamView} rfps=${rfps} onOpen=${r=>setViewId(r.id)}/>`:html`<${Fragment}>
+        <div class="toolbar">
+          <input placeholder=${`Search ${cur.label.toLowerCase()} — district, title, bid #, owner, product…`} value=${search} onInput=${e=>setSearch(e.target.value)}/>
+          <select value=${sort} onChange=${e=>setSort(e.target.value)}><option value="dueDate">Sort: due date</option><option value="district">Sort: district</option><option value="status">Sort: stage</option></select>
+        </div>
+        ${!loaded?html`<div class="empty"><div class="big">⏳</div><b>Loading RFPs…</b></div>`
+        :filtered.length===0?html`<div class="empty"><div class="big">${tab==="closed"?"🗂️":"📋"}</div><b>${rfps.length===0?"No RFPs yet":`Nothing in ${cur.label.toLowerCase()}`}</b><div>${rfps.length===0?"Add the first RFP, then add the standard checklist to assign documents to Sales, Legal, IT and Finance with due dates.":"Try another tab or clear the search."}</div></div>`
+        :html`<div class="grid">${filtered.map(r=>html`<${RFPCard} key=${r.id} r=${r} onOpen=${r=>setViewId(r.id)}/>`)}</div>`}
+      <//>`}
+    </main>
+
+    ${view&&!editing&&html`<${Detail} r=${view} readOnly=${!canWrite} toast=${toast} onClose=${()=>setViewId(null)} onEdit=${()=>setEditing(view)} onDelete=${remove} onUpdate=${patch=>upsert({...view,...patch})}/>`}
+    ${editing&&html`<${Form} r=${editing==="new"?null:editing} onSave=${handleSave} onClose=${()=>setEditing(null)}/>`}
+    ${toastMsg&&html`<div class="toast">${toastMsg}</div>`}
+  </div>`;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+})();
+</script>
+</body>
+</html>
