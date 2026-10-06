@@ -226,6 +226,11 @@ label.f>span{font-size:12px;font-weight:700;color:var(--ink-2)}
 (function(){
 const { useState, useEffect, useMemo, useRef, useCallback, Fragment } = React;
 const html = htm.bind(React.createElement);
+const APP_VERSION = "1.3";
+const THEME_KEY = "ka-rfp-theme";
+function readTheme(){ try{ return localStorage.getItem(THEME_KEY)||"auto"; }catch(e){ return "auto"; } }
+function applyTheme(t){ const el=document.documentElement; if(t==="auto") el.removeAttribute("data-theme"); else el.setAttribute("data-theme",t); try{ localStorage.setItem(THEME_KEY,t); }catch(e){} }
+applyTheme(readTheme());
 
 /* ───────── Reference data (Khan Academy District RFx process) ───────── */
 const TEAMS = {
@@ -725,6 +730,7 @@ function App(){
   const [viewId,setViewId]=useState(null);
   const [editing,setEditing]=useState(null);     // null | "new" | rfp
   const [toastMsg,setToastMsg]=useState("");
+  const [theme,setTheme]=useState(readTheme());
   const dbRef=useRef(null); const dlRef=useRef(null);
   const toast=useCallback(m=>{ setToastMsg(m); setTimeout(()=>setToastMsg(""),2200); },[]);
 
@@ -776,10 +782,11 @@ function App(){
       <div class="hdr-top">
         <div class="brand">
           <svg class="hex" viewBox="0 0 40 44" aria-hidden="true"><path d="M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z" fill="#14BF96"/></svg>
-          <div><h1>Khan Academy Districts · RFP Visibility Report</h1><p>Who owns what, and when it's due — across every open bid</p></div>
+          <div><h1>Khan Academy Districts · RFP Visibility Report</h1><p>Who owns what, and when it's due — across every open bid <span style=${{opacity:.5}}>· v${APP_VERSION}</span></p></div>
         </div>
         <div class="hdr-actions">
           <${Pill} bg=${storeMode==="db"?"rgba(20,191,150,.25)":"rgba(255,255,255,.14)"} color="#fff">${storeMode==="db"?"● Shared live data":"○ Saved in this browser only"}<//>
+          <div class="seg" style=${{borderColor:"rgba(255,255,255,.35)"}} title="Color mode">${[["light","☀ Light"],["auto","Auto"],["dark","☾ Dark"]].map(([k,l])=>html`<button key=${k} class=${theme===k?"on":""} style=${theme===k?{background:"var(--green)",color:"#042A20"}:{color:"#fff"}} onClick=${()=>{setTheme(k);applyTheme(k);}}>${l}</button>`)}</div>
           <button class="btn ghost small" style=${{color:"#fff"}} onClick=${exportJson}>Export JSON</button>
           ${canWrite&&html`<button class="btn green" onClick=${()=>setEditing("new")}>+ New RFP</button>`}
         </div>
